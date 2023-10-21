@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+
+  grpc-server:
+    build: ./grpc-server
+    volumes:
+      - ./grpc-server:/go/src
+    ports:
+      - "50051:50051"
