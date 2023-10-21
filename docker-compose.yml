@@ -8,3 +8,11 @@ services:
       - ./grpc-server:/go/src
     ports:
       - "50051:50051"
+    
+  grpc-client:
+    build: ./grpc-client
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grpc-client:/home/node/app
+
