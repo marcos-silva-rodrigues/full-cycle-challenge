@@ -13,7 +13,8 @@ export class ProductsService implements OnModuleInit {
   ) {}
 
   onModuleInit() {
-    this.productGrpcService = this.productGrpcPackage.getService('PixService');
+    this.productGrpcService =
+      this.productGrpcPackage.getService('ProductService');
   }
 
   create(createProductDto: CreateProductDto) {
@@ -21,6 +22,6 @@ export class ProductsService implements OnModuleInit {
   }
 
   findAll() {
-    return this.productGrpcService.findProducts();
+    return this.productGrpcService.findProducts({});
   }
 }

@@ -17,5 +17,5 @@ export interface ProductClientGrpc {
     description: string;
     price: number;
   }) => Observable<{ id: string; status: string; error: string }>;
-  findProducts: () => Observable<ProductListRpcResponse>;
+  findProducts: ({}) => Observable<ProductListRpcResponse>;
 }
