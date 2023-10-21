@@ -7,14 +7,16 @@ RUN mkdir -p /home/node/app
 WORKDIR /home/node/app
 
 COPY --chown=node package*.json ./
+COPY . .
 
-# RUN npm install
 
-# COPY --chown=node ./ .
+RUN npm install
 
-# RUN npm run build
+COPY --chown=node ./ .
+
+RUN npm run build
 
 # #EXPOSE 3000
 
-# CMD ["npm", "run", "start:prod"]
-CMD [ "tail", "-f", "/dev/null" ]
+CMD ["npm", "run", "start:dev"]
+# CMD [ "tail", "-f", "/dev/null" ]
