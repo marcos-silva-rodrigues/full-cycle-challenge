@@ -7,15 +7,16 @@ import (
 
 	"github.com/full-cycle-challenge/grpc/pb"
 	"github.com/full-cycle-challenge/grpc/services"
+	"github.com/full-cycle-challenge/usecase"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
 
-func StartGrpcServer(port int) {
+func StartGrpcServer(port int, productUseCase usecase.ProductUseCase) {
 	grpcServer := grpc.NewServer()
 	reflection.Register(grpcServer)
 
-	productServiceGrpc := services.NewProductServiceGrpc()
+	productServiceGrpc := services.NewProductServiceGrpc(productUseCase)
 	pb.RegisterProductServiceServer(grpcServer, productServiceGrpc)
 
 	address := fmt.Sprintf("0.0.0.0:%d", port)
